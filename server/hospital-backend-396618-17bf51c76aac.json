@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "hospital-backend-396618",
+    "private_key_id": "17bf51c76aac0b5fec0ba31caaaacc11ea7dba6a",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCZ06KUtRzjJzlo\nfJ5j5cXBt4Toy/IBWjltHC6qJBJ0IUhvW5u7d3Nz+B7IkbyycXnsxSpJMz56VQWN\nUT3jorE2426uGI+ypUVa9TEW5Wv1kn1Ojq8eIdtZPKltUIl+sK/PGUMx26l7x7oQ\nA95Tm1wGp4AK/OnIjhODmU67nh7uFEF1VAU82Lq741NROGqxY2xAHK/0DOeVwnMx\nfXsaqxTGt4dHOgs6dzAmi9k2ERWOav+zfmgikQ0SRycbx6sJO5hkeSvLsTMAW/BX\nLN0GJO8T8Q7kcmJGyze3EC6dTaz62uoI0XWgc8og4klP+MuWDkqCI2rFNzokq+pj\nVIv1OUR1AgMBAAECggEAQfiIKOOVrHu1fLC5UxmHWuGEYDybIOZba4ZjIvfObDyb\n7pooq1j6zDkUpqsN9K+C/T6/uF4ARQGynF1DwB0ViHc4j/SbqB+GI5C1SV8CEnMN\nR4Qc6TzW8Cn6dZXNKebHt3dboIXW5W2OR/EIx+2ApZ/vY4b9ElSQXOeCYydYl3yw\n8Yz39kmKO4r44ADtQm3otJY+HKn2YQm31Ia5aa9vXVcMNnn89p4qADeUc8tOJkj9\n+DOd6ZYI+B4ZyJFQEP7FWPKXH+oVVu8PSTilU2LFUcs873P1nGJxiTpLIfZGSN2r\nTHU4Ls7Ng6HM5RmXNE/VAjnakyCZu5WsySIMEky1bwKBgQDRfbmKUIyLdkGZxiRN\nYSh872R8LXRt7luKRtIVHqo1minqS4yQdHkd6YWglPJ+z65tJTVnKY+dy4VhfWGW\nj1lbiOog4iOloI5P6Mdg5oL1Jo6DGwN6uF7Iw/auLnnfCFDlQK0Q6jqm9iTWU4Y8\n6oNQWRRmvmeW9RnSPnlvRhC7qwKBgQC7+kOKyrFc8cLt9Or2EUJQ2JnUP+qUr+T+\n+9CznVDYkpfh2spmEckJn4K7xm75UWCnlbwimANBfO6TfqWKTTycYMfWE1XAxY+k\nrqV5ZAxV5+7jStImziFmkYizWZ18Q4ChlBtVgWHMTXGrKEo92D25E738f7Pq+Z54\nEHbR1GrgXwKBgQCAy28a3lLKGzZRuEPxXt5pkTSSM8/1FiopZUkbuvKiadmDNleB\nKFqeTUfeZjSASmbOq6WdeyvUs5+ZRGCPFCq34AExnlaUKZXVAyQxKwcweTf82srU\n1C1R+Ujb5a7/tDkn+Q9t6tOMeqBDNK6/HN8Gsv2b/Uvqv13UqJw4ETeQaQKBgDOI\nveGcBhn0EbvI7G1/d83QRAQDbd1Lh508DhBf7Z0iO09o+xoWgCYKO/4cvanOXJA1\nJbnaMPJQPNvk2Z9b42T/x2lyLY1G3EWKt8Ta3+LhTgW0Kn8G/fMvrOl2hQ1fODGT\n+BZt/RDUnngM+KWR1gIaXniNzhZ6Tq6d3OVTteVDAoGAPBnXw4RMJ9eNZlvExdCS\nk66Bs4bqVhlOwy0eM7o6zr+TWP0PEn5shUPv0I6CnTmt6QOmAqvQGIiaO0tVZWzw\nMcwa/MVItL/GKUu/3QxFd2cwOGuSCAA+suQsGKD3Q+4xMf7j96leBvLR4/goGOWr\njz5U0stSd+AZBbq4yQFolcc=\n-----END PRIVATE KEY-----\n",
+    "client_email": "niladriadak@hospital-backend-396618.iam.gserviceaccount.com",
+    "client_id": "102843180737868060967",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/niladriadak%40hospital-backend-396618.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+}
