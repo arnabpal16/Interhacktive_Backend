@@ -13,53 +13,42 @@ exports.createCourse = async (req, res) => {
 
     // Get all required fields from request body
     let {
-      courseName,
-      courseDescription,
-      whatYouWillLearn,
+      Docpublicname,
+      DocDescription,
+      Education,
+      DocRegno,
+      ClinicAddress,
+      Language,
       price,
-      tag: _tag,
       category,
-      status,
-      instructions: _instructions,
     } = req.body;
     // Get thumbnail image from request files
-    const thumbnail = req.files.thumbnailImage;
-
-    // Convert the tag and instructions from stringified Array to Array
-    const tag = JSON.parse(_tag);
-    const instructions = JSON.parse(_instructions);
-
-    console.log("tag", tag);
-    console.log("instructions", instructions);
 
     // Check if any of the required fields are missing
     if (
-      !courseName ||
-      !courseDescription ||
-      !whatYouWillLearn ||
-      !price ||
-      !tag.length ||
-      !thumbnail ||
+      !Docpublicname ||
+      !DocDescription ||
+      !Education ||
+      !DocRegno ||
+      !ClinicAddress ||
+      !Language ||
       !category ||
-      !instructions.length
+      !price
     ) {
       return res.status(400).json({
         success: false,
         message: "All Fields are Mandatory",
       });
     }
-    if (!status || status === undefined) {
-      status = "Draft";
-    }
     // Check if the user is an instructor
-    const instructorDetails = await User.findById(userId, {
-      accountType: "Instructor",
+    const doctorDetails = await User.findById(userId, {
+      accountType: "Doctor",
     });
 
-    if (!instructorDetails) {
+    if (!doctorDetails) {
       return res.status(404).json({
         success: false,
-        message: "Instructor Details Not Found",
+        message: "Doctor Details Not Found",
       });
     }
 
@@ -72,29 +61,29 @@ exports.createCourse = async (req, res) => {
       });
     }
     // Upload the Thumbnail to Cloudinary
-    const thumbnailImage = await uploadImageToCloudinary(
-      thumbnail,
-      process.env.FOLDER_NAME
-    );
-    console.log(thumbnailImage);
+    // const thumbnailImage = await uploadImageToCloudinary(
+    //   thumbnail,
+    //   process.env.FOLDER_NAME
+    // );
+    // console.log(thumbnailImage);
     // Create a new course with the given details
     const newCourse = await Course.create({
-      courseName,
-      courseDescription,
-      instructor: instructorDetails._id,
-      whatYouWillLearn: whatYouWillLearn,
+      Docpublicname,
+      DocDescription,
+      Doctor: doctorDetails._id,
       price,
-      tag,
+      Education,
+      DocRegno,
+      ClinicAddress,
+      Language,
       category: categoryDetails._id,
-      thumbnail: thumbnailImage.secure_url,
-      status: status,
-      instructions,
+      // thumbnail: thumbnailImage.secure_url,
     });
 
     // Add the new course to the User Schema of the Instructor
     await User.findByIdAndUpdate(
       {
-        _id: instructorDetails._id,
+        _id: doctorDetails._id,
       },
       {
         $push: {
@@ -201,18 +190,9 @@ exports.editCourse = async (req, res) => {
 // Get Course List
 exports.getAllCourses = async (req, res) => {
   try {
-    const allCourses = await Course.find(
-      { status: "Published" },
-      {
-        courseName: true,
-        price: true,
-        thumbnail: true,
-        instructor: true,
-        ratingAndReviews: true,
-        studentsEnrolled: true,
-      }
-    )
-      .populate("instructor")
+    const allCourses = await Course.find({})
+      .populate("Doctor")
+      .populate("category")
       .exec();
 
     return res.status(200).json({
@@ -357,23 +337,23 @@ exports.getFullCourseDetails = async (req, res) => {
 exports.getInstructorCourses = async (req, res) => {
   try {
     // Get the instructor ID from the authenticated user or request body
-    const instructorId = req.user.id;
+    const DoctorId = req.user.id;
 
     // Find all courses belonging to the instructor
-    const instructorCourses = await Course.find({
-      instructor: instructorId,
+    const doctorpublishments = await Course.find({
+      Doctor: DoctorId,
     }).sort({ createdAt: -1 });
 
     // Return the instructor's courses
     res.status(200).json({
       success: true,
-      data: instructorCourses,
+      data: doctorpublishments,
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({
       success: false,
-      message: "Failed to retrieve instructor courses",
+      message: "Failed to publishments",
       error: error.message,
     });
   }

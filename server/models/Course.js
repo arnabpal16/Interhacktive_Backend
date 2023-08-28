@@ -2,79 +2,48 @@ const mongoose = require("mongoose");
 
 // Define the Courses schema
 const coursesSchema = new mongoose.Schema({
-  courseName: { type: String },
-  courseDescription: { type: String },
-  instructor: {
+  Docpublicname: { type: String },
+  DocDescription: { type: [String] },
+  Doctor: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "user",
   },
-  whatYouWillLearn: {
-    type: String,
+  Education: {
+    type: [String],
   },
-  courseContent: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Section",
-    },
-  ],
+
   price: {
     type: Number,
   },
   thumbnail: {
     type: String,
   },
-  tag: {
-    type: [String],
-  },
+
   category: {
     type: mongoose.Schema.Types.ObjectId,
     // required: true,
     ref: "Category",
   },
-  studentsEnroled: [
+  PatientAppointed: [
     {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "user",
     },
   ],
-  instructions: {
-    type: [String],
-  },
-  status: {
+  DocRegno: {
     type: String,
-    enum: ["Draft", "Published"],
+  },
+  Language: {
+    type: String,
+  },
+  Address: {
+    type: [String],
   },
   createdAt: { type: Date, default: Date.now },
 });
 
-const doctorPublishSchema = new mongoose.Schema({
-  Doctor: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "user",
-  },
-  thumbnail: {
-    type: String,
-  },
-  regno: {
-    type: String,
-  },
-  instructions: {
-    type: [String],
-  },
-  previousApoint: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "user",
-    },
-  ],
-  apointmentPrice: {
-    type: String,
-  },
-});
 // Export the Courses model
 module.exports = mongoose.model("Course", coursesSchema);
-module.exports = mongoose.model("DoctorPublish", doctorPublishSchema);
+// module.exports = mongoose.model("DoctorPublish", doctorPublishSchema);

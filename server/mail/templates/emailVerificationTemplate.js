@@ -1,85 +1,268 @@
 const otpTemplate = (otp) => {
-	return `<!DOCTYPE html>
-	<html>
+  return `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 	
 	<head>
-		<meta charset="UTF-8">
-		<title>OTP Verification Email</title>
-		<style>
-			body {
-				background-color: #ffffff;
-				font-family: Arial, sans-serif;
-				font-size: 16px;
-				line-height: 1.4;
-				color: #333333;
-				margin: 0;
-				padding: 0;
-			}
+	  <!--[if gte mso 9]>
+	<xml>
+	  <o:OfficeDocumentSettings>
+		<o:AllowPNG/>
+		<o:PixelsPerInch>96</o:PixelsPerInch>
+	  </o:OfficeDocumentSettings>
+	</xml>
+	<![endif]-->
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="x-apple-disable-message-reformatting">
+	  <!--[if !mso]><!-->
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <!--<![endif]-->
+	  <title></title>
 	
-			.container {
-				max-width: 600px;
-				margin: 0 auto;
-				padding: 20px;
-				text-align: center;
-			}
+	  <style type="text/css">
+		@media only screen and (min-width: 520px) {
+		  .u-row {
+			width: 500px !important;
+		  }
+		  .u-row .u-col {
+			vertical-align: top;
+		  }
+		  .u-row .u-col-100 {
+			width: 500px !important;
+		  }
+		}
+		
+		@media (max-width: 520px) {
+		  .u-row-container {
+			max-width: 100% !important;
+			padding-left: 0px !important;
+			padding-right: 0px !important;
+		  }
+		  .u-row .u-col {
+			min-width: 320px !important;
+			max-width: 100% !important;
+			display: block !important;
+		  }
+		  .u-row {
+			width: 100% !important;
+		  }
+		  .u-col {
+			width: 100% !important;
+		  }
+		  .u-col>div {
+			margin: 0 auto;
+		  }
+		}
+		
+		body {
+		  margin: 0;
+		  padding: 0;
+		}
+		
+		table,
+		tr,
+		td {
+		  vertical-align: top;
+		  border-collapse: collapse;
+		}
+		
+		p {
+		  margin: 0;
+		}
+		
+		.ie-container table,
+		.mso-container table {
+		  table-layout: fixed;
+		}
+		
+		* {
+		  line-height: inherit;
+		}
+		
+		a[x-apple-data-detectors='true'] {
+		  color: inherit !important;
+		  text-decoration: none !important;
+		}
+		
+		table,
+		td {
+		  color: #000000;
+		}
+	  </style>
 	
-			.logo {
-				max-width: 200px;
-				margin-bottom: 20px;
-			}
 	
-			.message {
-				font-size: 18px;
-				font-weight: bold;
-				margin-bottom: 20px;
-			}
 	
-			.body {
-				font-size: 16px;
-				margin-bottom: 20px;
-			}
-	
-			.cta {
-				display: inline-block;
-				padding: 10px 20px;
-				background-color: #FFD60A;
-				color: #000000;
-				text-decoration: none;
-				border-radius: 5px;
-				font-size: 16px;
-				font-weight: bold;
-				margin-top: 20px;
-			}
-	
-			.support {
-				font-size: 14px;
-				color: #999999;
-				margin-top: 20px;
-			}
-	
-			.highlight {
-				font-weight: bold;
-			}
-		</style>
+	  <!--[if !mso]><!-->
+	  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet" type="text/css">
+	  <!--<![endif]-->
 	
 	</head>
 	
-	<body>
-		<div class="container">
-			<a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
-					src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo"></a>
-			<div class="message">OTP Verification Email</div>
-			<div class="body">
-				<p>Dear User,</p>
-				<p>Thank you for registering with StudyNotion. To complete your registration, please use the following OTP
-					(One-Time Password) to verify your account:</p>
-				<h2 class="highlight">${otp}</h2>
-				<p>This OTP is valid for 5 minutes. If you did not request this verification, please disregard this email.
-				Once your account is verified, you will have access to our platform and its features.</p>
-			</div>
-			<div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
-					href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
-		</div>
+	<body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #e7e7e7;color: #000000">
+	  <!--[if IE]><div class="ie-container"><![endif]-->
+	  <!--[if mso]><div class="mso-container"><![endif]-->
+	  <table style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #e7e7e7;width:100%" cellpadding="0" cellspacing="0">
+		<tbody>
+		  <tr style="vertical-align: top">
+			<td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+			  <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #e7e7e7;"><![endif]-->
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px;"><tr style="background-color: transparent;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="500" style="background-color: #3c628b;width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
+					  <div style="background-color: #3c628b;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:6px;font-family:arial,helvetica,sans-serif;" align="left">
+	
+								  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+									<tr>
+									  <td style="padding-right: 0px;padding-left: 0px;" align="center">
+	
+										<img align="center" border="0" src="https://assets.unlayer.com/projects/178230/1692565395182-329445.jpg" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 120px;"
+										  width="120" />
+	
+									  </td>
+									</tr>
+								  </table>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+	
+								  <h1 style="margin: 0px; color: #ffffff; line-height: 150%; text-align: center; word-wrap: break-word; font-family: Alex Brush; font-size: 32px; font-weight: 700;">Welcome</h1>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px;"><tr style="background-color: transparent;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="500" style="background-color: #3c628b;width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
+					  <div style="background-color: #3c628b;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+	
+								  <div style="font-family: helvetica,sans-serif; font-size: 16px; color: #ffffff; line-height: 150%; text-align: left; word-wrap: break-word;">
+									<p style="line-height: 150%;">Hello Niladri,</p>
+									<p style="line-height: 150%;">&nbsp;</p>
+									<p style="line-height: 150%;">Otp for your account verification is -${otp}</p>
+									<p style="line-height: 150%;">&nbsp;</p>
+									<p style="line-height: 150%;">Note:This otp is valid only for 10 minutes</p>
+									<p style="line-height: 150%;">&nbsp;</p>
+									<p style="line-height: 150%;">&nbsp;</p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+	
+	
+			  <div class="u-row-container" style="padding: 0px;background-color: transparent">
+				<div class="u-row" style="margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+				  <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px;"><tr style="background-color: transparent;"><![endif]-->
+	
+					<!--[if (mso)|(IE)]><td align="center" width="500" style="background-color: #ffffff;width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
+					<div class="u-col u-col-100" style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
+					  <div style="background-color: #ffffff;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+						<!--[if (!mso)&(!IE)]><!-->
+						<div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+						  <!--<![endif]-->
+	
+						  <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+							<tbody>
+							  <tr>
+								<td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+	
+								  <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
+									<p style="line-height: 140%; margin: 0px; color: #958d8d; text-align: center; white-space: normal; background-color: #f9f9f9;">Love <img data-emoji="💙" class="an1" alt="💙" aria-label="💙" src="https://fonts.gstatic.com/s/e/notoemoji/15.0/1f499/72.png" loading="lazy" style="height: 1.2em; width: 1.2em; vertical-align: middle; line-height: inherit;">                                  Team Med360</p>
+									<p style="line-height: 140%; margin: 0px; color: #958d8d; text-align: center; white-space: normal; background-color: #f9f9f9;">For any assistance and queries write to us at <span style="color: #1f1f1f; text-align: center; white-space: normal; background-color: #e9eef6; float: none; display: inline; line-height: 19.6px;">hospitalmanagement0001@gmail.com</span>&nbsp;</p>
+								  </div>
+	
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+	
+						  <!--[if (!mso)&(!IE)]><!-->
+						</div>
+						<!--<![endif]-->
+					  </div>
+					</div>
+					<!--[if (mso)|(IE)]></td><![endif]-->
+					<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+				  </div>
+				</div>
+			  </div>
+	
+	
+	
+			  <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	  <!--[if mso]></div><![endif]-->
+	  <!--[if IE]></div><![endif]-->
 	</body>
 	
 	</html>`;
