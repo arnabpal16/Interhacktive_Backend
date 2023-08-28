@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Multer = require("multer");
-const { auth, isInstructor } = require("../middleware/auth");
+const { auth, isDoctor } = require("../middleware/auth");
 const {
   deleteAccount,
   updateProfile,
@@ -21,6 +21,6 @@ router.get("/getUserDetails", auth, getAllUserDetails);
 // Get Enrolled Courses
 router.get("/getEnrolledCourses", auth, getEnrolledCourses);
 router.put("/updateDisplayPicture", auth, updateDisplayPicture);
-router.get("/instructorDashboard", auth, isInstructor, instructorDashboard);
+router.get("/instructorDashboard", auth, isDoctor, instructorDashboard);
 
 module.exports = router;
