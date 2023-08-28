@@ -55,5 +55,32 @@ const coursesSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+const doctorPublishSchema = new mongoose.Schema({
+  Doctor: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "user",
+  },
+  thumbnail: {
+    type: String,
+  },
+  regno: {
+    type: String,
+  },
+  instructions: {
+    type: [String],
+  },
+  previousApoint: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "user",
+    },
+  ],
+  apointmentPrice: {
+    type: String,
+  },
+});
 // Export the Courses model
 module.exports = mongoose.model("Course", coursesSchema);
+module.exports = mongoose.model("DoctorPublish", doctorPublishSchema);

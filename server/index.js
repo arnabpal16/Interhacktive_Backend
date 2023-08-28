@@ -1,6 +1,7 @@
 // Importing necessary modules and packages
 const express = require("express");
 const app = express();
+const multer = require("multer");
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
 const courseRoutes = require("./routes/Course");
@@ -12,6 +13,8 @@ const cors = require("cors");
 const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
+const { storeHealthRecord } = require("./controllers/HealthRecord");
+const { uploadImageToGCS } = require("./utils/fileUploader");
 
 // Setting up port number
 const PORT = process.env.PORT || 4000;
@@ -23,6 +26,12 @@ dotenv.config();
 database.connect();
 
 // Middlewares
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024, // Maximum file size (5 MB)
+  },
+});
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -47,6 +56,11 @@ app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", courseRoutes);
 // app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach", contactUsRoute);
+// app.post("/api/v1/upload", storeHealthRecord);
+app.post("/upload", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  const link = uploadImageToGCS(file);
+});
 
 // Testing the server
 app.get("/", (req, res) => {
