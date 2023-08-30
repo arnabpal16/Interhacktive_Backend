@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 // Define the Courses schema
 const coursesSchema = new mongoose.Schema({
   Docpublicname: { type: String },
-  DocDescription: { type: [String] },
+  DocDescription: { type: String },
   Doctor: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "user",
   },
   Education: {
-    type: [String],
+    type: String,
   },
 
   price: {
@@ -39,7 +39,7 @@ const coursesSchema = new mongoose.Schema({
     type: String,
   },
   Address: {
-    type: [String],
+    type: String,
   },
   createdAt: { type: Date, default: Date.now },
 });

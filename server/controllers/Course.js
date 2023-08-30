@@ -1,7 +1,5 @@
 const Course = require("../models/Course");
 const Category = require("../models/Category");
-const Section = require("../models/Section");
-const SubSection = require("../models/Subsection");
 const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const { convertSecondsToDuration } = require("../utils/secToDuration");
@@ -10,7 +8,7 @@ exports.createDoctorPublishments = async (req, res) => {
   try {
     // Get user ID from request object
     const userId = req.user.id;
-
+    console.log(req.body.thumbnail);
     // Get all required fields from request body
     let {
       Docpublicname,
@@ -127,7 +125,7 @@ exports.getAlldoctors = async (req, res) => {
       .populate("Doctor")
       .populate("category")
       .exec();
-
+    console.log(allCourses);
     return res.status(200).json({
       success: true,
       data: allCourses,
@@ -144,67 +142,31 @@ exports.getAlldoctors = async (req, res) => {
 
 exports.getfulldocdetails = async (req, res) => {
   try {
-    const { courseId } = req.body;
-    const userId = req.user.id;
+    const { doctorid } = req.body;
+    console.log(req.body);
     const courseDetails = await Course.findOne({
-      _id: courseId,
+      _id: doctorid,
     })
       .populate({
-        path: "instructor",
+        path: "Doctor",
+        select: "-password -courses -PatientAppointed",
         populate: {
-          path: "additionalDetails",
+          path: "additionalDetails", // Assuming the field name is "additionalDetails"
         },
       })
       .populate("category")
-      .populate("ratingAndReviews")
-      .populate({
-        path: "courseContent",
-        populate: {
-          path: "subSection",
-        },
-      })
       .exec();
-
-    let courseProgressCount = await CourseProgress.findOne({
-      courseID: courseId,
-      userId: userId,
-    });
-
-    console.log("courseProgressCount : ", courseProgressCount);
 
     if (!courseDetails) {
       return res.status(400).json({
         success: false,
-        message: `Could not find course with id: ${courseId}`,
+        message: `Could not find course with id: ${doctorid}`,
       });
     }
 
-    // if (courseDetails.status === "Draft") {
-    //   return res.status(403).json({
-    //     success: false,
-    //     message: `Accessing a draft course is forbidden`,
-    //   });
-    // }
-
-    let totalDurationInSeconds = 0;
-    courseDetails.courseContent.forEach((content) => {
-      content.subSection.forEach((subSection) => {
-        const timeDurationInSeconds = parseInt(subSection.timeDuration);
-        totalDurationInSeconds += timeDurationInSeconds;
-      });
-    });
-
-    const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
-
     return res.status(200).json({
       success: true,
-      data: {
-        courseDetails,
-        totalDuration,
-        completedVideos: courseProgressCount?.completedVideos
-          ? courseProgressCount?.completedVideos
-          : [],
-      },
+      data: courseDetails,
     });
   } catch (error) {
     return res.status(500).json({
@@ -218,11 +180,11 @@ exports.getfulldocdetails = async (req, res) => {
 exports.getdoctorpublishments = async (req, res) => {
   try {
     // Get the instructor ID from the authenticated user or request body
-    const DoctorId = req.user.id;
+    const doctorid = req.user.id;
 
     // Find all courses belonging to the instructor
     const doctorpublishments = await Course.find({
-      Doctor: DoctorId,
+      Doctor: doctorid,
     }).sort({ createdAt: -1 });
 
     // Return the instructor's courses

@@ -34,6 +34,7 @@ router.post("/createCourse", auth, isDoctor, createDoctorPublishments);
 router.get("/getInstructorCourses", auth, isDoctor, getdoctorpublishments);
 
 router.get("/getAllCourses", getAlldoctors);
+router.post("/getDocDetails", getfulldocdetails);
 
 // Get Details for a Specific docto
 // Delete a Course

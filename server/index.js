@@ -5,7 +5,9 @@ const multer = require("multer");
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
 const doctorRoutes = require("./routes/Doctor");
+const RazorPay = require("razorpay");
 // const paymentRoutes = require("./routes/Payments");
+
 const contactUsRoute = require("./routes/Contact");
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
@@ -25,6 +27,11 @@ dotenv.config();
 // Connecting to database
 database.connect();
 
+const instance = new RazorPay({
+  key_id: process.env.RAZORPAY_KEY,
+  key_secret: process.env.RAZORPAY_SECRET,
+});
+
 // Middlewares
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -36,7 +43,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://med360-team-404.vercel.app",
+    origin: [
+      "https://med360-team-404.vercel.app",
+      "https://med-n4ix5hnjea-el.a.run.app",
+      "http://localhost:3000",
+    ],
     credentials: true,
   })
 );
