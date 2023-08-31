@@ -5,6 +5,7 @@ const multer = require("multer");
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
 const doctorRoutes = require("./routes/Doctor");
+const paymentRoutes = require("./routes/Payments");
 const RazorPay = require("razorpay");
 // const paymentRoutes = require("./routes/Payments");
 
@@ -65,7 +66,7 @@ cloudinaryConnect();
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/course", doctorRoutes);
-// app.use("/api/v1/payment", paymentRoutes);
+app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach", contactUsRoute);
 // app.post("/api/v1/upload", storeHealthRecord);
 app.post("/upload", upload.single("image"), async (req, res) => {

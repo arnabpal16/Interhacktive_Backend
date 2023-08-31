@@ -25,7 +25,8 @@ exports.resetPasswordToken = async (req, res) => {
     );
     console.log("DETAILS", updatedDetails);
 
-    const url = `https://med360-team-404.vercel.app/forgot-password/${token}`;
+    // const url = `https://med360-team-404.vercel.app/forgot-password/${token}`;
+    const url = `http://localhost:3000/update-password/${token}`;
 
     await mailSender(
       email,

@@ -72,7 +72,7 @@ exports.createDoctorPublishments = async (req, res) => {
       price,
       Education,
       DocRegno,
-      ClinicAddress,
+      Address: ClinicAddress,
       Language,
       category: categoryDetails._id,
       // thumbnail: thumbnailImage.secure_url,

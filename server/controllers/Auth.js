@@ -6,6 +6,7 @@ const otpGenerator = require("otp-generator");
 const mailSender = require("../utils/mailSender");
 const { passwordUpdated } = require("../mail/templates/passwordUpdate");
 const Profile = require("../models/Profile");
+const apointment = require("../models/Apointment");
 require("dotenv").config();
 
 // Signup Controller for Registering USers
@@ -86,6 +87,10 @@ exports.signup = async (req, res) => {
       about: null,
       contactNumber: null,
     });
+    const ApontmentDetails = await apointment.create({
+      patient: null,
+      doctor: null,
+    });
     const user = await User.create({
       firstName,
       lastName,
@@ -95,6 +100,7 @@ exports.signup = async (req, res) => {
       accountType: accountType,
       approved: approved,
       additionalDetails: profileDetails._id,
+      appointments: [],
       image: "",
     });
 

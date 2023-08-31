@@ -84,7 +84,6 @@ exports.deleteAccount = async (req, res) => {
       success: true,
       message: "User deleted successfully",
     });
-    await CourseProgress.deleteMany({ userId: id });
   } catch (error) {
     console.log(error);
     res

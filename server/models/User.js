@@ -69,9 +69,13 @@ const userSchema = new mongoose.Schema(
     appointments: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "DoctorPublish",
+        ref: "apointment",
       },
     ],
+    earn: {
+      type: Number,
+      default: 0,
+    },
 
     // Add timestamps for when the document is created and last modified
   },
