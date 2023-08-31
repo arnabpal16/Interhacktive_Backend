@@ -85,20 +85,20 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
     .digest("hex");
 
   if (expectedSignature === razorpay_signature) {
-    // try {
-    //   const Patient = await User.findById(userId);
+    try {
+      const Patient = await User.findById(userId);
 
-    //   await mailSender(
-    //     Patient.email,
-    //     `Payment Received`,
-    //     `Hello ${Patient.firstName} your Payment towards Appointment recived succesfully Amout of ₹${orgamout} and OrderId is ${razorpay_order_id}`
-    //   );
-    // } catch (error) {
-    //   console.log("error in sending mail", error);
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, message: "Could not send email" });
-    // }
+      await mailSender(
+        Patient.email,
+        `Payment Received`,
+        `Hello ${Patient.firstName} your Payment towards Appointment recived succesfully Amout of ₹${orgamout} and OrderId is ${razorpay_order_id}`
+      );
+    } catch (error) {
+      console.log("error in sending mail", error);
+      return res
+        .status(400)
+        .json({ success: false, message: "Could not send email" });
+    }
     await enrollAppointment(doctorId, userId, orgamout);
     return res.status(200).json({ success: true, message: "Payment Verified" });
   }

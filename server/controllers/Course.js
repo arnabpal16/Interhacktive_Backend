@@ -252,3 +252,51 @@ exports.deletedoctor = async (req, res) => {
     });
   }
 };
+exports.getUserAppointments = async (req, res) => {
+  const { userId } = req.body; // Assuming you're sending the user ID in the request parameter
+  console.log(userId);
+  try {
+    const user = await User.findById(userId);
+    const userdetails = await User.findById(userId).populate({
+      path: "appointments",
+      populate: {
+        path: "patient doctor",
+        select: "firstName lastName",
+      },
+    });
+
+    if (!userdetails) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found." });
+    }
+
+    const userAppointments = userdetails.appointments;
+
+    if (userAppointments.length === 0) {
+      return res.status(200).json({
+        success: true,
+        message: "No appointments found for the user.",
+      });
+    }
+
+    const formattedAppointments = userAppointments.map((appointment) => ({
+      _id: appointment._id,
+      patient: {
+        name: `${appointment.patient.firstName} ${appointment.patient.lastName}`,
+      },
+      doctor: {
+        name: `${appointment.doctor.firstName} ${appointment.doctor.lastName}`,
+      },
+    }));
+
+    res
+      .status(200)
+      .json({ success: true, appointments: formattedAppointments });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ success: false, message: "Error fetching user appointments." });
+  }
+};

@@ -11,6 +11,7 @@ const {
   getfulldocdetails,
   getdoctorpublishments,
   deletedoctor,
+  getUserAppointments,
 } = require("../controllers/Course");
 
 // Categories Controllers Import
@@ -48,5 +49,6 @@ router.delete("/deleteCourse", deletedoctor);
 router.post("/createCategory", auth, isAdmin, createCategory);
 router.get("/showAllCategories", showAllCategories);
 router.post("/getCategoryPageDetails", categoryPageDetails);
+router.post("/getUserAppointments", auth, getUserAppointments);
 
 module.exports = router;
